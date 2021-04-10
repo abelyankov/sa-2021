@@ -1,0 +1,2 @@
+CREATE USER mektep_db;
+ALTER USER mektep_db WITH SUPERUSER;
