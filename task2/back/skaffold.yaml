@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta13
+kind: Config
+metadata:
+  name: back
+build:
+  artifacts:
+  - image: abelyankov/back
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - deployment.yaml
+    - service.yaml

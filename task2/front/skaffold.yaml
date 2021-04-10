@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta13
+kind: Config
+metadata:
+  name: front
+build:
+  artifacts:
+  - image: abelyankov/front
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - deployment.yaml
+    - service.yaml

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-deployment
+  labels:
+    app: front-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: front-app
+  template:
+    metadata:
+      labels:
+        app: front-app
+    spec:
+      containers:
+      - name: front-container
+        image: abelyankov/front:v1
+        ports:
+        - containerPort: 3000
+        # livenessProbe:
+        #   httpGet:
+        #     port: 3000
+        #     path: /
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 5
+        #   timeoutSeconds: 2
+        # readinessProbe:
+        #   httpGet:
+        #     port: 3000
+        #     path: /health
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 5
+        
