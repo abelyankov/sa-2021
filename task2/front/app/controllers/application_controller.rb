@@ -10,13 +10,13 @@ class ApplicationController < ActionController::Base
   end
 
   def students
-    http = get_http
-    # @response = JSON.parse(http.request(Net::HTTP::Get.new("/studnets")).body)
+    response = get_http
+    @response = JSON.parse(response.body)
   end
 
   def works
-    http = get_http
-    # @response = JSON.parse(http.request(Net::HTTP::Get.new("/works")).body)
+    response = get_http
+    @response = JSON.parse(response.body)
   end
 
   private def get_http
@@ -30,6 +30,5 @@ class ApplicationController < ActionController::Base
     
     request = Net::HTTP::Get.new(@path, initheader = {'Content-Type' =>'application/json'})
     response = Net::HTTP.new(@host, @port).start {|http| http.request(request) }
-    puts "Response #{response.code} #{response.message}: #{response.body}"
   end
 end
