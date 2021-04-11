@@ -1,35 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: back-deployment
+  name: docker-example-deployment
   labels:
-    app: back-app
+    app: docker-example-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: back-app
+      app: docker-example-app
   template:
     metadata:
       labels:
-        app: back-app
+        app: docker-example-app
     spec:
       containers:
-      - name: back-container
-        image: abelyankov/back:v1
+      - name: docker-example-container
+        image: abelyankov/docker-example:v1
         ports:
         - containerPort: 3000
         livenessProbe:
           httpGet:
             port: 3000
             path: /
-          initialDelaySeconds: 10
+          initialDelaySeconds: 30
           periodSeconds: 5
-          timeoutSeconds: 2
+          timeoutSeconds: 20
         readinessProbe:
           httpGet:
             port: 3000
             path: /health
-          initialDelaySeconds: 10
+          initialDelaySeconds: 30
           periodSeconds: 5
         
