@@ -23,13 +23,13 @@ spec:
           httpGet:
             port: 3000
             path: /
-          initialDelaySeconds: 10
+          initialDelaySeconds: 60
           periodSeconds: 5
-          timeoutSeconds: 2
+          timeoutSeconds: 20
         readinessProbe:
           httpGet:
             port: 3000
             path: /health
-          initialDelaySeconds: 10
+          initialDelaySeconds: 60
           periodSeconds: 5
         
