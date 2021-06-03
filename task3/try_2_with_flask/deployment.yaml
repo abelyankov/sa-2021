@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: flask-app-app
+  template:
+    metadata:
+      labels:
+        app: flask-app-app
+    spec:
+      containers:
+      - name: flask-app-app
+        image: abelyankov/flask_app:v3.8
+        env:
+          - name: DATABASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: flask-app-secret
+                key: DATABASE_URI
+          - name: GREETING
+            value: "SALEM"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - name: web
+            containerPort: 80

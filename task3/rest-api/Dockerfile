@@ -19,7 +19,9 @@ RUN apk add --update --no-cache \
       postgresql-dev \
       python3 \
       yarn
-
+RUN apk update \
+    && apk add build-base \
+       tzdata
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.8/main' >> /etc/apk/repositories && \
     apk add --no-cache libcrypto1.0 libssl1.0
 

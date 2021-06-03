@@ -19,7 +19,15 @@ spec:
         image: abelyankov/myapp:v1
         env:
         - name: DATABASE_HOST
-          value: "postgresql+psycopg2://myuser:passwd@postgres:5432/app"
+          value: localhost
+        - name: DATABASE_NAME
+          value: myapp
+        - name: DATABASE_USER
+          value: myuser
+        - name: DATABASE_PASSWORD
+          value: passwd
+        - name: DATABASE_PORT
+          value: 57364
         - name: GREETING
           value: SALEM
         ports:
