@@ -1,9 +1,16 @@
 import os
 import json
-
+import logging
 from flask import Flask, request
+from prometheus_flask_exporter import PrometheusMetrics
+logging.basicConfig(level=logging.INFO)
+logging.info("Setting LOGLEVEL to INFO")
 
 app = Flask(__name__)
+
+metrics = PrometheusMetrics(app)
+metrics.info("app_info", "App Info, this can be anything you want", version="1.0.0")
+
 config = {
     "DATABASE_URI": os.environ.get("DATABASE_URI", ""),
     "HOSTNAME": os.environ["HOSTNAME"],

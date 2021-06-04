@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: flask-app-app
-        image: abelyankov/flask_app:v3.8
+        image: abelyankov/flask_app:v4.0
         env:
           - name: DATABASE_URI
             valueFrom:
